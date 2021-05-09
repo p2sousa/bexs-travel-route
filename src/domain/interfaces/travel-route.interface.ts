@@ -2,11 +2,14 @@ export interface ITravelRouteEntity {
   getId(): string | null;
   getDeparture(): string;
   getDestination(): string;
-  getRouteComplete(): [];
+  getRouteComplete(): string[];
   getPrice(): number;
 }
 
 export interface ITravelRouteRepository {
-  getBestRoute(departure: string, destination: string): ITravelRouteEntity;
-  persistRoute(route: ITravelRouteEntity): ITravelRouteEntity;
+  getBestRoute(
+    departure: string,
+    destination: string,
+  ): Promise<ITravelRouteEntity>;
+  persistRoute(route: ITravelRouteEntity): Promise<ITravelRouteEntity>;
 }

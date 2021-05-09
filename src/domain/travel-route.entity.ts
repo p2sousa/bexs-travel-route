@@ -8,7 +8,7 @@ export class TravelRouteEntity implements ITravelRouteEntity {
 
   private destination: string;
 
-  private routeComplete: [];
+  private routeComplete: string[];
 
   private price: number;
 
@@ -16,7 +16,7 @@ export class TravelRouteEntity implements ITravelRouteEntity {
     id: string | null,
     departure: string,
     destination: string,
-    routeComplete: [],
+    routeComplete: string[],
     price: number,
   ) {
     if (
@@ -41,7 +41,7 @@ export class TravelRouteEntity implements ITravelRouteEntity {
     return true;
   }
 
-  private isRouteCompleteValid(routeComplete: []): boolean {
+  private isRouteCompleteValid(routeComplete: string[]): boolean {
     if (routeComplete.length < 2) {
       return false;
     }
@@ -67,7 +67,7 @@ export class TravelRouteEntity implements ITravelRouteEntity {
     return this.destination;
   }
 
-  public getRouteComplete(): [] {
+  public getRouteComplete(): string[] {
     return this.routeComplete;
   }
 

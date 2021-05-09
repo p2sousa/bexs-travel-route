@@ -9,6 +9,7 @@ import logger from '@configurations/logger';
 import { apiErrorValidator } from '@infrastructure/middlewares/api-error-validator.middlewares';
 import HealthCheckController from '@infrastructure/controllers/health-check.controller';
 import openapiDocument from '@infrastructure/contracts';
+import TravelRouteController from '@infrastructure/controllers/travel-route.controller';
 
 export default class SetupServer extends Server {
   private server?: http.Server;
@@ -42,7 +43,10 @@ export default class SetupServer extends Server {
   }
 
   private setupControllers(): void {
-    this.addControllers([new HealthCheckController()]);
+    this.addControllers([
+      new HealthCheckController(),
+      new TravelRouteController(),
+    ]);
   }
 
   private setupErrorHandlers(): void {
