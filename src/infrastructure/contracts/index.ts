@@ -5,6 +5,11 @@ import {
   healthCheckPaths,
 } from '@infrastructure/contracts/health-check.doc';
 
+import {
+  travelRoutePaths,
+  bestTravelRouteSchema,
+} from '@infrastructure/contracts/travel-route.doc';
+
 const swaggerDocument: OpenAPIV3.Document = {
   openapi: '3.0.1',
   info: {
@@ -19,10 +24,12 @@ const swaggerDocument: OpenAPIV3.Document = {
   ],
   paths: {
     ...healthCheckPaths,
+    ...travelRoutePaths,
   },
   components: {
     schemas: {
       healthcheck: healthcheckSchema,
+      bestTravelRoute: bestTravelRouteSchema,
       error: errorSchema,
     },
   },
