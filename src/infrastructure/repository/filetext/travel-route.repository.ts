@@ -57,7 +57,20 @@ export default class TravelRouteRepository implements ITravelRouteRepository {
     }
   }
 
-  public persistRoute(route: ITravelRouteEntity): Promise<ITravelRouteEntity> {
-    throw new Error('Method not implemented.');
+  public async persistRoute(
+    route: ITravelRouteEntity,
+  ): Promise<ITravelRouteEntity> {
+    try {
+      const dataToSave = `\n${route.getRouteComplete()},${route.getPrice()}`;
+
+      fs.appendFileSync(settings.database.filetext.path, dataToSave);
+
+      return route;
+    } catch (err) {
+      logger.error('Error: TravelRouteRepository::persistRoute', {
+        error: err.message,
+      });
+      throw err;
+    }
   }
 }
