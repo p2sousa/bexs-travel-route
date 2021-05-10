@@ -12,25 +12,30 @@
     "test:int": "jest --runInBand --config ./jest/jest.int-config.js",
     "dev": "ts-node src/index.ts",
     "start": "node ./dist/src/index.js",
-    "build": "yarn run clean; tsc -p .",
+    "build": "yarn run clean; tsc -p .; cp ./input-file.txt ./dist/input-file.txt",
     "clean": "rm -rf dist",
-    "release": "semantic-release"
+    "release": "semantic-release",
+    "best-travel-route:dev": "ts-node -r tsconfig-paths/register src/infrastructure/commands/travel-route-application.command.ts best-route -f",
+    "best-travel-route": "node ./dist/src/infrastructure/commands/travel-route-application.command.js best-route -f"
   },
   "dependencies": {
     "@overnightjs/core": "^1.7.5",
+    "commander": "^7.2.0",
     "express": "^4.17.1",
-    "swagger-ui-express": "^4.1.6",
     "express-openapi-validator": "^4.11.0",
-    "openapi-types": "7.2.3",
-    "module-alias": "^2.2.2",
     "express-validator": "^6.10.0",
-    "winston": "^3.3.3",
-    "http-status-codes": "^2.1.4"
+    "http-status-codes": "^2.1.4",
+    "inquirer": "^8.0.0",
+    "module-alias": "^2.2.2",
+    "openapi-types": "7.2.3",
+    "swagger-ui-express": "^4.1.6",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.1",
     "@commitlint/config-conventional": "^12.1.1",
     "@types/express": "^4.17.11",
+    "@types/inquirer": "^7.3.1",
     "@types/jest": "^26.0.23",
     "@types/module-alias": "^2.0.0",
     "@types/node": "^14.14.29",
