@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "test": "yarn run test:unit && yarn run test:int",
-    "test:unit": "jest --config ./jest/jest.config.js",
+    "test:unit": "jest --config ./jest/jest.config.js --runInBand --forceExit --coverage --verbose --detectOpenHandles",
     "test:int": "jest --runInBand --config ./jest/jest.int-config.js",
     "dev": "ts-node src/index.ts",
     "start": "node ./dist/src/index.js",
@@ -65,7 +65,8 @@
   "lint-staged": {
     "*.ts": [
       "yarn prettier --write src/**/*.ts",
-      "yarn eslint . --ext .ts"
+      "yarn eslint . --ext .ts",
+      "yarn test:unit"
     ]
   }
 }
