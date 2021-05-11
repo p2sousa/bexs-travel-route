@@ -61,6 +61,14 @@ Primeiro `instale` as dependencias, faça o `build` da aplicação e  `execute` 
 
 ## Aplicação: Rest ##
 
+Para rodar a aplicação Rest, execute o seguinte comando para levantar o servidor http.
+
+```shell
+$ yarn && yarn build && yarn start
+
+{"message":"Server listening on port: 3000","level":"info","service":"bexs-travel-route","version":"1.0.0"}
+```
+
 Além da interface em command-line a aplicação possui uma API Rest, que disponibiliza dois endpoints:
 
 ### Cadastro de uma rota de viagem ###
